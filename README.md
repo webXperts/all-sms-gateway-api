@@ -12,7 +12,7 @@ Open `config.php` and change `AUTH_KEY` and `SERVER` value
 
 ```require_once('autoload.php');
 
-$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+$apiClient = new SMSGatewayApi(AUTH_KEY_HERE, SERVER_URL_HERE);
 
 try {
 

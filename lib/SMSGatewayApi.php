@@ -13,10 +13,28 @@ class SMSGatewayApi {
 
 	private $server;
 
+	private $sendThrough;
+
 	public function __construct($authKey, $server)
 	{
 		$this->authKey = $authKey;
 		$this->server = $server;
+
+		$this->sendThrough = 'android';
+	}
+
+	/**
+	 * @param $gateway 	android | http
+	 *
+	 * @return void
+	 */
+	public function sendThrough($gateway)
+	{
+		if (!in_array($gateway, array('android', 'http'))) {
+			throw new Exception("Invalid gateway", 1);
+			
+		}
+		$this->sendThrough = $gateway;
 	}
 
 	/**
@@ -36,6 +54,22 @@ class SMSGatewayApi {
 	}
 
 	/**
+	 * @param string     $mobile_no  The mobile number where you want to send message.
+	 * @param string     $message The message you want to send.
+	 * @param string     $sender_id The sender_id nane you want to use to send this message.
+	 * @param striing 	 $gateway  The gatewaty nane you want to use to send this message.
+	 *
+	 * @return array     Returns The array containing information about the message.
+	 * @throws Exception If there is an error while sending a message.
+	 */
+	public function sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway = '')
+	{
+	    $url = SERVER . "/sms/sendViaHttp";
+	    $postData = array('mobile_no' => $mobile_no, 'message' => $message, 'sender_id' => $sender_id, 'gateway' => $gateway);
+	    return $this->sendRequest($url, $postData);
+	}
+
+	/**
 	 * @param array         $mobile_numbers  The mobile number where you want to send message.
 	 * @param string        $message The message you want to send.
 	 * @param string        $device_model The model of the device you want to use to send this message.
@@ -49,6 +83,22 @@ class SMSGatewayApi {
 	{
 	    $url = SERVER . "/sms/sendMultipleSms";
 	    $postData = array('mobile_numbers' => $mobile_numbers, 'message' => $message, 'device_model' => $device_model, 'sim_id' => $sim_id, 'send_at' => $send_at);
+	    return $this->sendRequest($url, $postData);
+	}
+
+	/**
+	 * @param array      $mobile_numbers  The mobile number where you want to send message.
+	 * @param string     $message The message you want to send.
+	 * @param string     $sender_id The sender_id nane you want to use to send this message.
+	 * @param striing 	 $gateway  The gatewaty nane you want to use to send this message.
+	 *
+	 * @return array     Returns The array containing information about the message.
+	 * @throws Exception If there is an error while sending a message.
+	 */
+	public function sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $gateway = '')
+	{
+	    $url = SERVER . "/sms/sendMultipleViaHttp";
+	    $postData = array('mobile_numbers' => $mobile_numbers, 'message' => $message, 'sender_id' => $sender_id, 'gateway' => $gateway);
 	    return $this->sendRequest($url, $postData);
 	}
 

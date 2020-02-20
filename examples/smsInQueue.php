@@ -4,6 +4,7 @@
 // Get SMS in Queue
 // ---------------------
 
+// Example 01: for android
 
 require_once('../autoload.php');
 
@@ -17,6 +18,18 @@ try {
     
     echo $e->getMessage();
 }
+
+// Example 02: for http
+
+try {
+    
+    $sms_in_queue = $apiClient->getSmsInQueue(array('filterby_send_through' => 'http', 'filterby_gateway' => 'mimsms', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
+    print_r($sms_in_queue);
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
+
 
 
 

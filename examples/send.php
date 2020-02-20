@@ -74,3 +74,40 @@ Array
 )
 
 */
+
+
+// Send Single SMS through Http gateway
+// --------------------
+
+
+require_once('autoload.php');
+
+$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+
+try {
+
+    $apiClient->sendThrough('http');
+    $mobile_no = '8801303595747';
+    $message = 'This SMS from API at localhost';
+    $sender_id = 'wed63478u';
+    $gateway = 'mimsms';
+    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
+    print_r($response);
+
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
+
+/*
+
+Output in Success
+---------
+
+Array
+(
+    [status] => Success
+    [msg] => queued
+)
+    
+*/

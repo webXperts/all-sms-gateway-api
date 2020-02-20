@@ -4,11 +4,11 @@
 // Get SMS History
 // --------------------
 
+// Example 01: for android
 
 require_once('../autoload.php');
 
 $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
-
 
 try {
     
@@ -18,6 +18,22 @@ try {
     
     echo $e->getMessage();
 }
+
+
+// Example 02: for http
+
+require_once('autoload.php');
+
+
+try {
+    
+    $history = $apiClient->getHistory(array('filterby_send_through' => 'http', 'filterby_gateway' => 'mimsms', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
+    print_r($history);
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
+
 
 
 

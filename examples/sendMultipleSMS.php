@@ -5,27 +5,28 @@
 // ----------------------
 
 
-require_once('../autoload.php');
+// Example 01: for android
 
-$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+// require_once('../autoload.php');
+
+// $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 
-try {
+// try {
 
-    $mobile_numbers = array(
-        '14156661234',
-        '14156661235',
-    );
+//     $mobile_numbers = array(
+//         '14156661234',
+//         '14156661235',
+//     );
 
-    $response = $apiClient->sendMultipleSMS($mobile_numbers, 'Hi Mike, This is a test messsage', 'ARS-L22', 2, 'now');
+//     $response = $apiClient->sendMultipleSMS($mobile_numbers, 'Hi Mike, This is a test messsage', 'ARS-L22', 2, 'now');
 
-    print_r($response);
+//     print_r($response);
 
-} catch (Exception $e) {
+// } catch (Exception $e) {
     
-    echo $e->getMessage();
-}
-
+//     echo $e->getMessage();
+// }
 
 
 /*
@@ -69,3 +70,27 @@ Array
 )
 
 */
+
+
+// Example 02: for http
+
+require_once('../autoload.php');
+
+$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+
+
+try {
+
+    $mobile_numbers = array(
+        '14156661234',
+        '14156661235',
+    );
+
+    $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, 'Hi Mike, This is a test messsage', 'wed63478u', 'mimsms');
+
+    print_r($response);
+
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
