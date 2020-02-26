@@ -4,7 +4,7 @@
 ### Contact: admin@ntechpark.com
 
 
-##  Send SMS
+## Send SMS through Android Gateway
 
 Rename `config.dist.php` file into `config.php` and
 Open `config.php` and change `AUTH_KEY` and `SERVER` value  
@@ -76,6 +76,45 @@ Array
 
         )
 
+)
+
+*/
+```
+
+
+## Send SMS through Http gateway
+
+
+```require_once('autoload.php');
+
+try {
+
+    $apiClient->sendThrough('http');
+    $mobile_no = '8801303595747';
+    $message = 'This SMS from API at localhost';
+    $sender_id = 'wed63478u';
+    $gateway = 'mimsms';
+    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
+    print_r($response);
+
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
+
+
+
+/*
+
+
+Output
+---------
+
+
+Array
+(
+    [status] => Success
+    [msg] => queued
 )
 
 */
