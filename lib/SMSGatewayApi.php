@@ -30,7 +30,8 @@ class SMSGatewayApi {
 	 */
 	public function sendThrough($gateway)
 	{
-		if (!in_array($gateway, array('android', 'http'))) {
+		if (!in_array($gateway, array('Android', 'Http')))
+		{
 			throw new Exception("Invalid gateway", 1);
 			
 		}
@@ -125,7 +126,8 @@ class SMSGatewayApi {
 	 *  'limit' => $limit,
 	 * );
 	 */
-	public function getSmsInQueue($filter_data) {
+	public function getSmsInQueue($filter_data)
+	{
 	    $url = SERVER . "/sms/getSmsInQueue";
 	    return $this->sendRequest($url, $filter_data);
 	}
@@ -150,9 +152,22 @@ class SMSGatewayApi {
 	 *  'limit' => $limit,
 	 * );
 	 */
-	public function getHistory($filter_data) {
+	public function getHistory($filter_data)
+	{
 	    $url = SERVER . "/sms/getHistory";
 	    return $this->sendRequest($url, $filter_data);
+	}
+
+	public function generateOtp()
+	{
+		$url = SERVER . "/otp/generate";
+	    return $this->sendRequest($url, array());
+	}
+
+	public function validateOtp($otp)
+	{
+		$url = SERVER . "/otp/validate";
+	    return $this->sendRequest($url, array('otp' => trim($otp)));
 	}
 
 	/**
@@ -161,7 +176,7 @@ class SMSGatewayApi {
 	 * @return mixed     The result containing mixed data
 	 * @throws Exception If there is an error while sending request.
 	 */
-	public function sendRequest($url, $postData)
+	public function sendRequest($url, $postData = array())
 	{
 	    $ch = curl_init();
 	    curl_setopt($ch, CURLOPT_URL, $url);
@@ -170,27 +185,39 @@ class SMSGatewayApi {
 	    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
 	    $response = curl_exec($ch);
 	    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	    if (curl_errno($ch)) {
+	    if (curl_errno($ch))
+	    {
 	        throw new Exception(curl_error($ch));
 	    }
 	    curl_close($ch);
-	    if ($httpCode == 200) {
+	    if ($httpCode == 200)
+	    {
 	        $json = json_decode($response, true);
-	        if ($json == false) {
-	            if (empty($response)) {
-	                throw new Exception("Missing data in request. Please provide all the required information to send messages.");
+	        if ($json == false)
+	        {
+	            if (empty($response))
+	            {
+	                throw new Exception("Missing data in request. Please provide all the required information.");
 	            } else {
 	                throw new Exception($response);
 	            }
 	        } else {
-	            if ($json["status"] == 'Success') {
+	            if ($json["status"] == 'Success')
+	            {
 	                return $json;
 	            } else {
 	                throw new Exception($json["errorMsg"]);
 	            }
 	        }
 	    } else {
-	        throw new Exception("HTTP Error Code : {$httpCode}");
+	    	$json = @json_decode($response, true);
+	    	$msg = isset($json['errorMsg']) ? $json['errorMsg'] .' | ': '';
+	        throw new Exception($msg . "HTTP Error Code : {$httpCode}");
 	    }
 	}
+}
+
+function dd($data)
+{
+	echo "<pre>".print_r($data,true)."</pre>"; exit;
 }

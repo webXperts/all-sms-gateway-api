@@ -12,7 +12,7 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
     
-    $history = $apiClient->getHistory(array('filterby_device' => 'ARS-L22', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2019-11-29 23:59:00'));
+    $history = $apiClient->getHistory(array('filterby_device' => '1', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2019-11-29 23:59:00'));
     print_r($history);
 } catch (Exception $e) {
     
@@ -52,7 +52,7 @@ Array
                 (
                     [id] => 1
                     [status] => delivered
-                    [device] => ARS-L22
+                    [device] => 1
                     [sim] => 2
                     [mobile_no] => 14156661234
                     [message] => This SMS from API at localhost

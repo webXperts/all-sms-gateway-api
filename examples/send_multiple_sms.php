@@ -7,26 +7,26 @@
 
 // Example 01: for android
 
-// require_once('../autoload.php');
+require_once('../autoload.php');
 
-// $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 
-// try {
+try {
 
-//     $mobile_numbers = array(
-//         '14156661234',
-//         '14156661235',
-//     );
+    $mobile_numbers = array(
+        '14156661234',
+        '14156661235',
+    );
 
-//     $response = $apiClient->sendMultipleSMS($mobile_numbers, 'Hi Mike, This is a test messsage', 'ARS-L22', 2, 'now');
+    $response = $apiClient->sendMultipleSMS($mobile_numbers, 'Hi Mike, This is a test messsage', '1', 2, 'now');
 
-//     print_r($response);
+    print_r($response);
 
-// } catch (Exception $e) {
+} catch (Exception $e) {
     
-//     echo $e->getMessage();
-// }
+    echo $e->getMessage();
+}
 
 
 /*
@@ -46,7 +46,7 @@ Array
                 (
                     [schedule_at] => 2019-11-29 21:28:45
                     [queue_id] => 15750413253ec1
-                    [device_model] => ARS-L22
+                    [device_model] => 1
                     [sim_id] => 2
                     [mobile_no] => 14156661234
                     [message] => Hi [contact_name] from  [site_name] at [common_date_time]
@@ -57,7 +57,7 @@ Array
                 (
                     [schedule_at] => 2019-11-29 21:28:45
                     [queue_id] => 15750413250101
-                    [device_model] => ARS-L22
+                    [device_model] => 1
                     [sim_id] => 2
                     [mobile_no] => 14156661235
                     [message] => Hi [contact_name] from  [site_name] at [common_date_time]

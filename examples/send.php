@@ -11,7 +11,7 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $response = $apiClient->sendSMS('14156661234', 'This SMS from API at localhost', 'ARS-L22', 2);
+    $response = $apiClient->sendSMS('14156661234', 'This SMS from API at localhost', '1', 2);
     print_r($response);
 
 } catch (Exception $e) {
@@ -56,7 +56,7 @@ Array
                         (
                             [username] => admin.sms@ntechpark.com
                             [firebase_access_key] => 
-                            [device_model] => ARS-L22
+                            [device_model] => 1
                             [device_token] => 
                             [sim_id] => 2
                             [created_by] => 1
@@ -86,7 +86,7 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $apiClient->sendThrough('http');
+    $apiClient->sendThrough('Http');
     $mobile_no = '8801303595747';
     $message = 'This SMS from API at localhost';
     $sender_id = 'wed63478u';
