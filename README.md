@@ -1,7 +1,7 @@
 # Mobile SMS Gateway API Client
 
 ### Developed by [nTechpark Technologies Ltd.](http://ntechpark.com)
-### Contact: admin@ntechpark.com
+### Email: admin@ntechpark.com
 
 
 ## Send SMS through Android Gateway
@@ -120,7 +120,7 @@ Array
 */
 ```
 
-## OTP Generation
+## OTP Generate
 
 
 ```require_once('autoload.php');
@@ -135,17 +135,17 @@ try {
     }
 
     $otp = $response['otp'];
-    dd($response);
+    print_r($response);
 
     // Send SMS
     /*
     $apiClient->sendThrough('Http');
-    $mobile_no = '8801737346122';
+    $mobile_no = '14156661234';
     $message = 'OTP: ' . $otp;
     $sender_id = 'wed63478u';
     $gateway = 'mimsms';
     $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
-    dd($response);
+    print_r($response);
     */
     
 } catch (Exception $e) {
@@ -168,13 +168,13 @@ Array
 */
 ```
 
-## OTP Validation
+## OTP Validate
 
 
 ```require_once('autoload.php');
 $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
-$otp = ''; // See OTP Generation section, above
+$otp = ''; // See OTP Generate section, above
 
 try {
 

@@ -16,17 +16,17 @@ try {
 	}
 
 	$otp = $response['otp'];
-	dd($response);
+	print_r($response);
 
 	// Send SMS
 	/*
 	$apiClient->sendThrough('Http');
-	$mobile_no = '8801737346122';
+	$mobile_no = '14156661234';
 	$message = 'OTP: ' . $otp;
 	$sender_id = 'wed63478u';
 	$gateway = 'mimsms';
 	$response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
-	dd($response);
+	print_r($response);
 	*/
 	
 } catch (Exception $e) {
