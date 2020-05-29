@@ -23,7 +23,7 @@ try {
 
 try {
     
-    $sms_in_queue = $apiClient->getSmsInQueue(array('filterby_send_through' => 'http', 'filterby_gateway' => 'mimsms', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
+    $sms_in_queue = $apiClient->getSmsInQueue(array('filterby_send_through' => 'http', 'filterby_gateway' => 'clickatell', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
     print_r($sms_in_queue);
 } catch (Exception $e) {
     

@@ -1,4 +1,4 @@
-# Mobile SMS Gateway API Client
+# All SMS Gateway API Client
 
 ### Developed by [nTechpark Technologies Ltd.](http://ntechpark.com)
 ### Email: admin@ntechpark.com
