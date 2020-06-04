@@ -8,9 +8,10 @@
 //     $mobile_no = '8801737346122';
 //     $message = 'This SMS from API at localhost';
 //     $sender_id = 'wed63478u';
+//	   $country_id = 'wed63478u';
 //     $gateway = 'mimsms';
 
-//     $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
+//     $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway);
 
 //     print_r($response);
 

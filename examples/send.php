@@ -90,8 +90,9 @@ try {
     $mobile_no = '8801303595747';
     $message = 'This SMS from API at localhost';
     $sender_id = 'wed63478u';
+    $country_id = 14;
     $gateway = 'mimsms';
-    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
+    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway);
     print_r($response);
 
 } catch (Exception $e) {

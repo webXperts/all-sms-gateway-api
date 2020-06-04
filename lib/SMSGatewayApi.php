@@ -63,10 +63,10 @@ class SMSGatewayApi {
 	 * @return array     Returns The array containing information about the message.
 	 * @throws Exception If there is an error while sending a message.
 	 */
-	public function sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway = '')
+	public function sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway)
 	{
 	    $url = SERVER . "/sms/sendViaHttp";
-	    $postData = array('mobile_no' => $mobile_no, 'message' => $message, 'sender_id' => $sender_id, 'gateway' => $gateway);
+	    $postData = array('mobile_no' => $mobile_no, 'message' => $message, 'sender_id' => $sender_id, 'country_id' => $country_id, 'gateway_id' => $gateway);
 	    return $this->sendRequest($url, $postData);
 	}
 
@@ -96,10 +96,10 @@ class SMSGatewayApi {
 	 * @return array     Returns The array containing information about the message.
 	 * @throws Exception If there is an error while sending a message.
 	 */
-	public function sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $gateway = '')
+	public function sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $country_id, $gateway)
 	{
 	    $url = SERVER . "/sms/sendMultipleViaHttp";
-	    $postData = array('mobile_numbers' => $mobile_numbers, 'message' => $message, 'sender_id' => $sender_id, 'gateway' => $gateway);
+	    $postData = array('mobile_numbers' => $mobile_numbers, 'message' => $message, 'sender_id' => $sender_id, 'country_id' => $country_id, 'gateway_id' => $gateway);
 	    return $this->sendRequest($url, $postData);
 	}
 

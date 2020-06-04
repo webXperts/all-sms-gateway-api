@@ -85,8 +85,11 @@ try {
         '14156661234',
         '14156661235',
     );
-
-    $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, 'Hi Mike, This is a test messsage', 'wed63478u', 'mimsms');
+    $message = 'Hi Mike, This is a test messsage';
+    $sender_id = 'wed63478u';
+    $country_id = 14;
+    $gateway = 'mimsms';
+    $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $country_id, $gateway);
 
     print_r($response);
 
