@@ -9,41 +9,31 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-	$response = $apiClient->generateOtp();
+	$lifetime = 18800; // in second
+	$response = $apiClient->generateOtp($lifetime);
 	if (!isset($response['otp']))
 	{
-		throw new Exception("Faile to generate an OTP");
+		throw new Exception("Unable to generate an OTP");
 	}
 
 	$otp = $response['otp'];
 	print_r($response);
-
-	// Send SMS
-	/*
-	$apiClient->sendThrough('Http');
-	$mobile_no = '14156661234';
-	$message = 'OTP: ' . $otp;
-	$sender_id = 'wed63478u';
-	$gateway = 'mimsms';
-	$response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $gateway);
-	print_r($response);
-	*/
 	
 } catch (Exception $e) {
 	
-	die($e->getMessage());
+	echo $e->getMessage();
 }
 
 
 /*
 
-Output in Success
+Response in Success
 ----------
 
 Array
 (
     [status] => Success
     [msg] => Otp Successfully Generated
-    [otp] => e67c1e
+    [otp] => b10df7
 )
 */

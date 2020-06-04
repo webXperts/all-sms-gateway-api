@@ -5,21 +5,105 @@
 // ----------------------
 
 
-// Example 01: for android
-
-require_once('../autoload.php');
+require_once('autoload.php');
 
 $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
-
 
 try {
 
     $mobile_numbers = array(
-        '14156661234',
-        '14156661235',
+        '01737346122',
+        '01303595747',
     );
 
-    $response = $apiClient->sendMultipleSMS($mobile_numbers, 'Hi Mike, This is a test messsage', '1', 2, 'now');
+    $message = 'do you like sport?';
+ $device_id = 1;
+ $sim_id = 99;
+ $data_type = 'Plain';
+ $send_at = 'now';
+    $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);
+
+    print_r($response);
+
+} catch (Exception $e) {
+    
+    echo $e->getMessage();
+}
+
+/*
+
+Response in Failed
+--------
+
+Failed | Message Contains Spam Word | HTTP Error Code : 422
+
+
+Response in Success
+---------
+
+Array
+(
+    [status] => Success
+    [msg] => 1 Messages Send to Queue for Processing
+    [data] => Array
+        (
+            [1] => Array
+                (
+                    [schedule_at] => 2020-06-04 22:03:48
+                    [queue_id] => 1591286628c9f3
+                    [device_id] => 1
+                    [sim_id] => 99
+                    [mobile_no] => 01737346122
+                    [data_type] => Plain
+                    [message] => do you like sport?
+                    [status] => Failed
+                    [response_text] => Mobile Number was Blocked
+                )
+
+            [2] => Array
+                (
+                    [schedule_at] => 2020-06-04 22:03:48
+                    [queue_id] => 159128662854f3
+                    [device_id] => 1
+                    [sim_id] => 99
+                    [mobile_no] => 01303595747
+                    [data_type] => Plain
+                    [message] => do you like sport?
+                    [created_at] => 2020-06-04 22:03:48
+                    [status] => Success
+                    [response_text] => Message Successfully Send for Processing
+                )
+
+        )
+
+    [total] => 2
+    [failed] => 1
+    [success] => 1
+)
+
+
+*/
+
+
+// Example 02: for Http/Smpp
+
+require_once('autoload.php');
+
+$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
+
+try {
+
+ $mobile_numbers = array(
+        '01737346122',
+        '01303595747',
+    );
+    $message = 'Do you like sport?';
+    $sender_id = 'dfewrty56yu';
+    $country_id = 14;
+    $gateway = 'mimsms';
+    $data_type = 'Plain'; // Plain/Unicode
+    $send_at = 'now';
+    $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $country_id, $gateway, $data_type, $send_at);
 
     print_r($response);
 
@@ -31,69 +115,48 @@ try {
 
 /*
 
-
-Output
+Response in Success
 ---------
-
 
 Array
 (
     [status] => Success
-    [msg] => 2 SMS send to queue for precessing
+    [msg] => 1 Messages Send to Queue for Processing
     [data] => Array
         (
-            [0] => Array
-                (
-                    [schedule_at] => 2019-11-29 21:28:45
-                    [queue_id] => 15750413253ec1
-                    [device_model] => 1
-                    [sim_id] => 2
-                    [mobile_no] => 14156661234
-                    [message] => Hi [contact_name] from  [site_name] at [common_date_time]
-                    [created_at] => 2019-11-29 21:28:45
-                )
-
             [1] => Array
                 (
-                    [schedule_at] => 2019-11-29 21:28:45
-                    [queue_id] => 15750413250101
-                    [device_model] => 1
-                    [sim_id] => 2
-                    [mobile_no] => 14156661235
-                    [message] => Hi [contact_name] from  [site_name] at [common_date_time]
-                    [created_at] => 2019-11-29 21:28:45
+                    [schedule_at] => 2020-06-04 21:21:55
+                    [queue_id] => 1591284115b4f3
+                    [gateway] => mimsms
+                    [sender_id] => dfewrty56yu
+                    [mobile_no] => 01737346122
+                    [data_type] => Plain
+                    [message] => Do you like sport?
+                    [created_at] => 2020-06-04 21:21:55
+                    [status] => Failed
+                    [response_text] => Mobile Number was Blocked
+                )
+
+            [2] => Array
+                (
+                    [schedule_at] => 2020-06-04 21:21:55
+                    [queue_id] => 15912841157673
+                    [gateway] => mimsms
+                    [sender_id] => dfewrty56yu
+                    [mobile_no] => 01303595747
+                    [data_type] => Plain
+                    [message] => Do you like sport?
+                    [created_at] => 2020-06-04 21:21:55
+                    [status] => Success
+                    [response_text] => Message Successfully Send for Processing
                 )
 
         )
 
     [total] => 2
-)
+    [failed] => 1
+    [success] => 1
+) 
 
 */
-
-
-// Example 02: for http
-
-require_once('../autoload.php');
-
-$apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
-
-
-try {
-
-    $mobile_numbers = array(
-        '14156661234',
-        '14156661235',
-    );
-    $message = 'Hi Mike, This is a test messsage';
-    $sender_id = 'wed63478u';
-    $country_id = 14;
-    $gateway = 'mimsms';
-    $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $country_id, $gateway);
-
-    print_r($response);
-
-} catch (Exception $e) {
-    
-    echo $e->getMessage();
-}

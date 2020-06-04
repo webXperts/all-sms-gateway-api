@@ -1,7 +1,7 @@
 <?php
 
 
-// Send Single SMS
+// Send Single SMS Android gateway
 // --------------------
 
 
@@ -11,7 +11,13 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $response = $apiClient->sendSMS('14156661234', 'This SMS from API at localhost', '1', 2);
+ $mobile_no = '01737346122';
+ $message = 'do you like sport?';
+ $device_id = 1;
+ $sim_id = 99;
+ $data_type = 'Plain';
+    $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $data_type);
+    
     print_r($response);
 
 } catch (Exception $e) {
@@ -19,14 +25,16 @@ try {
     echo $e->getMessage();
 }
 
-
-
 /*
 
+Response in Failed
+--------
 
-Output
+Failed | Message Contains Spam Word | HTTP Error Code : 422
+
+
+Response in Success
 ---------
-
 
 Array
 (
@@ -73,10 +81,11 @@ Array
 
 )
 
+
 */
 
 
-// Send Single SMS through Http gateway
+// Send Single SMS through Http/SMPP gateway
 // --------------------
 
 
@@ -86,29 +95,37 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $apiClient->sendThrough('Http');
-    $mobile_no = '8801303595747';
-    $message = 'This SMS from API at localhost';
-    $sender_id = 'wed63478u';
-    $country_id = 14;
-    $gateway = 'mimsms';
-    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway);
-    print_r($response);
+ $mobile_no = '01737346122';
+ $message = 'do you like sport?';
+ $sender_id = 'dfewrty56yu';
+ $country_id = 14;
+ $gateway = 'mimsms';
+ $data_type = 'Plain'; // Plain/Unicode
+ $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
+
+ print_r($response);
 
 } catch (Exception $e) {
     
     echo $e->getMessage();
 }
 
+
 /*
 
-Output in Success
+Response in Failed
+---------
+
+Failed | Message Contains Spam Word | HTTP Error Code : 422
+
+
+Response in Success
 ---------
 
 Array
 (
     [status] => Success
-    [msg] => queued
+    [msg] => Message Send to Queue for Processing
 )
-    
+
 */

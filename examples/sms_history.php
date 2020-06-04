@@ -4,43 +4,26 @@
 // Get SMS History
 // --------------------
 
-// Example 01: for android
-
-require_once('../autoload.php');
+require_once('autoload.php');
 
 $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
+
 try {
     
-    $history = $apiClient->getHistory(array('filterby_device' => '1', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2019-11-29 23:59:00'));
+    $history = $apiClient->getHistory(array('filterby_send_through' => 'Http', 'filterby_gateway_id' => 'mimsms', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
+
     print_r($history);
+
 } catch (Exception $e) {
     
     echo $e->getMessage();
 }
-
-
-// Example 02: for http
-
-require_once('autoload.php');
-
-
-try {
-    
-    $history = $apiClient->getHistory(array('filterby_send_through' => 'http', 'filterby_gateway' => 'clickatell', 'filterby_from' => '2019-11-29 12:00:00', 'filterby_to' => '2020-11-29 23:59:00'));
-    print_r($history);
-} catch (Exception $e) {
-    
-    echo $e->getMessage();
-}
-
-
-
 
 /*
 
 
-Output
+Response in Success
 ---------
 
 Array
@@ -50,18 +33,28 @@ Array
         (
             [0] => Array
                 (
-                    [id] => 1
-                    [status] => delivered
-                    [device] => 1
-                    [sim] => 2
-                    [mobile_no] => 14156661234
-                    [message] => This SMS from API at localhost
-                    [username] => admin.sms@ntechpark.com
-                    [created_by] => 1
-                    [created_at] => 2019-11-29 13:15:51
+                    [id] => 93
+                    [send_through] => Http
+                    [gateway_id] => mimsms
+                    [sender_id] => wed63478u
+                    [country_id] => 14
+                    [response_id] => 957593
+                    [status] => Delivered
+                    [device_id] => 
+                    [sim_id] => 
+                    [mobile_no] => 01737346122
+                    [data_type] => Plain
+                    [message] => This is very good morning...
+                    [campaign_id] => 
+                    [user_id] => 3
+                    [created_by] => 3
+                    [updated_at] => 2020-05-30 17:41:32
+                    [created_at] => 2020-05-30 17:41:01
                 )
-		)
+
+        )
 
 )
+
 
 */

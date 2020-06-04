@@ -15,7 +15,13 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $response = $apiClient->sendSMS('14156661234', 'This SMS from API at localhost', 'ARS-L22', 2);
+ $mobile_no = '01737346122';
+ $message = 'do you like sport?';
+ $device_id = 1;
+ $sim_id = 99;
+ $data_type = 'Plain';
+    $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $data_type);
+    
     print_r($response);
 
 } catch (Exception $e) {
@@ -27,10 +33,14 @@ try {
 
 /*
 
+Response in Failed
+--------
 
-Output
+Failed | Message Contains Spam Word | HTTP Error Code : 422
+
+
+Response in Success
 ---------
-
 
 Array
 (
@@ -60,7 +70,7 @@ Array
                         (
                             [username] => admin.sms@ntechpark.com
                             [firebase_access_key] => 
-                            [device_model] => ARS-L22
+                            [device_model] => 1
                             [device_token] => 
                             [sim_id] => 2
                             [created_by] => 1
@@ -77,11 +87,12 @@ Array
 
 )
 
+
 */
 ```
 
 
-## Send SMS through Http gateway
+## Send SMS through Http/SMPP gateway
 
 
 ```require_once('autoload.php');
@@ -89,14 +100,15 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $apiClient->sendThrough('http');
-    $mobile_no = '8801303595747';
-    $message = 'This SMS from API at localhost';
-    $sender_id = 'wed63478u';
-    $country_id = 14;
-    $gateway = 'mimsms';
-    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway);
-    print_r($response);
+ $mobile_no = '01737346122';
+ $message = 'do you like sport?';
+ $sender_id = 'dfewrty56yu';
+ $country_id = 14;
+ $gateway = 'mimsms';
+ $data_type = 'Plain'; // Plain/Unicode
+ $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
+
+ dd($response);
 
 } catch (Exception $e) {
     
@@ -107,15 +119,19 @@ try {
 
 /*
 
-
-Output
+Response in Failed
 ---------
 
+Failed | Message Contains Spam Word | HTTP Error Code : 422
+
+
+Response in Success
+---------
 
 Array
 (
     [status] => Success
-    [msg] => queued
+    [msg] => Message Send to Queue for Processing
 )
 
 */
@@ -129,43 +145,32 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
-    $response = $apiClient->generateOtp();
+    $lifetime = 18800; // in second
+    $response = $apiClient->generateOtp($lifetime);
     if (!isset($response['otp']))
     {
-        throw new Exception("Faile to generate an OTP");
+        throw new Exception("Unable to generate an OTP");
     }
 
     $otp = $response['otp'];
     print_r($response);
-
-    // Send SMS
-    /*
-    $apiClient->sendThrough('Http');
-    $mobile_no = '14156661234';
-    $message = 'OTP: ' . $otp;
-    $sender_id = 'wed63478u';
-    $country_id = 14;
-    $gateway = 'mimsms';
-    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway);
-    print_r($response);
-    */
     
 } catch (Exception $e) {
     
-    die($e->getMessage());
+    echo $e->getMessage();
 }
 
 
 /*
 
-Output in Success
+Response in Success
 ----------
 
 Array
 (
     [status] => Success
     [msg] => Otp Successfully Generated
-    [otp] => e67c1e
+    [otp] => b10df7
 )
 */
 ```
@@ -183,27 +188,31 @@ try {
     if (!$otp)
     {
         throw new Exception("Invalid OTP");
-        
     }
 
     $response = $apiClient->validateOtp($otp);
+
     print_r($response);
     
 } catch (Exception $e) {
     
-    die($e->getMessage());
+    echo $e->getMessage();
 }
 
 /*
 
-Output is Success
+Response in Failed
+
+Failed | Invalid Otp | HTTP Error Code : 422
+
+Response is Success
 ------------------
 
 Array
 (
     [status] => Success
     [msg] => Otp Successfully Validated
-    [otp] => bb796d
+    [otp] => 98fde1
 )
 
 */
