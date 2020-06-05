@@ -200,28 +200,28 @@ Array
 
 // Send Multiple SMS Via Android Gateway
 
-// require_once('autoload.php');
+require_once('autoload.php');
 
-// try {
+try {
 
-//     $mobile_numbers = array(
-//         '01737346122',
-//         '01303595747',
-//     );
+    $mobile_numbers = array(
+        '01737346122',
+        '01303595747',
+    );
 
-//     $message = 'do you like sport?';
-// 	$device_id = 1;
-// 	$sim_id = 99;
-// 	$data_type = 'Plain';
-// 	$send_at = 'now';
-//     $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);
+    $message = 'do you like sport?';
+	$device_id = 1;
+	$sim_id = 99;
+	$data_type = 'Plain';
+	$send_at = 'now';
+    $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);
 
-//     dd($response);
+    dd($response);
 
-// } catch (Exception $e) {
+} catch (Exception $e) {
     
-//     echo $e->getMessage();
-// }
+    echo $e->getMessage();
+}
 
 /*
 
@@ -432,25 +432,25 @@ Array
 
 // OTP validation
 
-require_once('autoload.php');
+// require_once('autoload.php');
 
-$otp = '98fde1';
+// $otp = '98fde1';
 
-try {
+// try {
 
-	if (!$otp)
-	{
-		throw new Exception("Invalid OTP");
-	}
+// 	if (!$otp)
+// 	{
+// 		throw new Exception("Invalid OTP");
+// 	}
 
-	$response = $apiClient->validateOtp($otp);
+// 	$response = $apiClient->validateOtp($otp);
 
-	dd($response);
+// 	dd($response);
 	
-} catch (Exception $e) {
+// } catch (Exception $e) {
 	
-	echo $e->getMessage();
-}
+// 	echo $e->getMessage();
+// }
 
 /*
 
