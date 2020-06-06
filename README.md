@@ -1,7 +1,7 @@
 # All SMS Gateway API Client
 
 ### Developed by [nTechpark Technologies Ltd.](http://ntechpark.com)
-### Email: admin@ntechpark.com
+### Email: contact@ntechpark.com, ntechpark@gmail.com
 
 
 ## Send SMS through Android Gateway
@@ -15,7 +15,7 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
- $mobile_no = '01737346122';
+ $mobile_no = '11110346122';
  $message = 'do you like sport?';
  $device_id = 1;
  $sim_id = 99;
@@ -100,7 +100,7 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
- $mobile_no = '01737346122';
+ $mobile_no = '11110346122';
  $message = 'do you like sport?';
  $sender_id = 'dfewrty56yu';
  $country_id = 14;

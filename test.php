@@ -6,7 +6,7 @@ require_once('autoload.php');
 
 try {
 
-	$mobile_no = '01737346122';
+	$mobile_no = '11110346122';
 	$message = 'do you like sport?';
 	$sender_id = 'dfewrty56yu';
 	$country_id = 14;
@@ -49,8 +49,8 @@ Array
 // try {
 
 // 	$mobile_numbers = array(
-//         '01737346122',
-//         '01303595747',
+//         '11110346122',
+//         '11113595747',
 //     );
 //     $message = 'Do you like sport?';
 //     $sender_id = 'dfewrty56yu';
@@ -85,7 +85,7 @@ Array
                     [queue_id] => 1591284115b4f3
                     [gateway] => mimsms
                     [sender_id] => dfewrty56yu
-                    [mobile_no] => 01737346122
+                    [mobile_no] => 11110346122
                     [data_type] => Plain
                     [message] => Do you like sport?
                     [created_at] => 2020-06-04 21:21:55
@@ -99,7 +99,7 @@ Array
                     [queue_id] => 15912841157673
                     [gateway] => mimsms
                     [sender_id] => dfewrty56yu
-                    [mobile_no] => 01303595747
+                    [mobile_no] => 11113595747
                     [data_type] => Plain
                     [message] => Do you like sport?
                     [created_at] => 2020-06-04 21:21:55
@@ -124,7 +124,7 @@ Array
 
 // try {
 
-// 	$mobile_no = '01737346122';
+// 	$mobile_no = '11110346122';
 // 	$message = 'do you like sport?';
 // 	$device_id = 1;
 // 	$sim_id = 99;
@@ -205,8 +205,8 @@ Array
 // try {
 
 //     $mobile_numbers = array(
-//         '01737346122',
-//         '01303595747',
+//         '11110346122',
+//         '11113595747',
 //     );
 
 //     $message = 'do you like sport?';
@@ -246,7 +246,7 @@ Array
                     [queue_id] => 1591286628c9f3
                     [device_id] => 1
                     [sim_id] => 99
-                    [mobile_no] => 01737346122
+                    [mobile_no] => 11110346122
                     [data_type] => Plain
                     [message] => do you like sport?
                     [status] => Failed
@@ -259,7 +259,7 @@ Array
                     [queue_id] => 159128662854f3
                     [device_id] => 1
                     [sim_id] => 99
-                    [mobile_no] => 01303595747
+                    [mobile_no] => 11113595747
                     [data_type] => Plain
                     [message] => do you like sport?
                     [created_at] => 2020-06-04 22:03:48
@@ -318,7 +318,7 @@ Array
                     [status] => Delivered
                     [device_id] => 
                     [sim_id] => 
-                    [mobile_no] => 01737346122
+                    [mobile_no] => 11110346122
                     [data_type] => Plain
                     [message] => This is very good morning...
                     [campaign_id] => 
@@ -369,7 +369,7 @@ Array
                     [schedule_at] => 2020-06-04 21:21:55
                     [queue_id] => 15912841157673
                     [send_through] => Http
-                    [mobile_no] => 01303595747
+                    [mobile_no] => 11113595747
                     [device_id] => 
                     [sim_id] => 
                     [country_id] => 14
