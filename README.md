@@ -175,7 +175,7 @@ Array
 */
 ```
 
-## OTP Validate
+## OTP Validation
 
 
 ```require_once('autoload.php');
