@@ -1,7 +1,7 @@
 <?php
 
 
-// Send Multiple SMS
+// Send Multiple SMS from Android
 // ----------------------
 
 
@@ -12,18 +12,18 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 try {
 
     $mobile_numbers = array(
-        '01737346122',
-        '01303595747',
+        '11110346122',
+        '11113595747',
     );
 
     $message = 'do you like sport?';
- $device_id = 1;
- $sim_id = 99;
- $data_type = 'Plain';
- $send_at = 'now';
+    $device_id = 1;
+    $sim_id = 99;
+    $data_type = 'Plain';
+    $send_at = 'now';
     $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);
 
-    print_r($response);
+    dd($response);
 
 } catch (Exception $e) {
     
@@ -53,7 +53,7 @@ Array
                     [queue_id] => 1591286628c9f3
                     [device_id] => 1
                     [sim_id] => 99
-                    [mobile_no] => 01737346122
+                    [mobile_no] => 11110346122
                     [data_type] => Plain
                     [message] => do you like sport?
                     [status] => Failed
@@ -66,7 +66,7 @@ Array
                     [queue_id] => 159128662854f3
                     [device_id] => 1
                     [sim_id] => 99
-                    [mobile_no] => 01303595747
+                    [mobile_no] => 11113595747
                     [data_type] => Plain
                     [message] => do you like sport?
                     [created_at] => 2020-06-04 22:03:48
@@ -94,8 +94,8 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 try {
 
  $mobile_numbers = array(
-        '01737346122',
-        '01303595747',
+        '11110346122',
+        '11113595747',
     );
     $message = 'Do you like sport?';
     $sender_id = 'dfewrty56yu';
@@ -105,7 +105,7 @@ try {
     $send_at = 'now';
     $response = $apiClient->sendMultipleSMSviaHttp($mobile_numbers, $message, $sender_id, $country_id, $gateway, $data_type, $send_at);
 
-    print_r($response);
+    dd($response);
 
 } catch (Exception $e) {
     
@@ -130,7 +130,7 @@ Array
                     [queue_id] => 1591284115b4f3
                     [gateway] => mimsms
                     [sender_id] => dfewrty56yu
-                    [mobile_no] => 01737346122
+                    [mobile_no] => 11110346122
                     [data_type] => Plain
                     [message] => Do you like sport?
                     [created_at] => 2020-06-04 21:21:55
@@ -144,7 +144,7 @@ Array
                     [queue_id] => 15912841157673
                     [gateway] => mimsms
                     [sender_id] => dfewrty56yu
-                    [mobile_no] => 01303595747
+                    [mobile_no] => 11113595747
                     [data_type] => Plain
                     [message] => Do you like sport?
                     [created_at] => 2020-06-04 21:21:55

@@ -11,14 +11,14 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
- $mobile_no = '01737346122';
+ $mobile_no = '11110346122';
  $message = 'do you like sport?';
  $device_id = 1;
  $sim_id = 99;
  $data_type = 'Plain';
     $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $data_type);
     
-    print_r($response);
+    dd($response);
 
 } catch (Exception $e) {
     
@@ -95,15 +95,15 @@ $apiClient = new SMSGatewayApi(AUTH_KEY, SERVER);
 
 try {
 
- $mobile_no = '01737346122';
- $message = 'do you like sport?';
- $sender_id = 'dfewrty56yu';
- $country_id = 14;
- $gateway = 'mimsms';
- $data_type = 'Plain'; // Plain/Unicode
- $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
+    $mobile_no = '11110346122';
+    $message = 'do you like sport?';
+    $sender_id = 'dfewrty56yu';
+    $country_id = 14;
+    $gateway = 'mimsms';
+    $data_type = 'Plain'; // Plain/Unicode
+    $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
 
- print_r($response);
+    dd($response);
 
 } catch (Exception $e) {
     

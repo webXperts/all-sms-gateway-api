@@ -108,7 +108,7 @@ try {
  $data_type = 'Plain'; // Plain/Unicode
  $response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
 
- dd($response);
+ print_r($response);
 
 } catch (Exception $e) {
     

@@ -17,7 +17,7 @@ try {
 	}
 
 	$otp = $response['otp'];
-	print_r($response);
+	dd($response);
 	
 } catch (Exception $e) {
 	

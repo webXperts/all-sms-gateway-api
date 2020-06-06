@@ -18,7 +18,7 @@ try {
 
 	$response = $apiClient->validateOtp($otp);
 
-	print_r($response);
+	dd($response);
 	
 } catch (Exception $e) {
 	
@@ -40,5 +40,3 @@ Array
     [msg] => Otp Successfully Validated
     [otp] => 98fde1
 )
-
-*/
