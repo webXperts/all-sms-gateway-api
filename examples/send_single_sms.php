@@ -14,9 +14,9 @@ try {
  $mobile_no = '11110346122';
  $message = 'do you like sport?';
  $device_id = 1;
- $sim_id = 99;
+ $sim_id = 1;
  $data_type = 'Plain';
-    $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $data_type);
+    $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $sim_id, $data_type);
     
     dd($response);
 

@@ -2,24 +2,24 @@
 
 // Send Singe SMS Via HTTP / SMPP Gateway
 
-require_once('autoload.php');
+// require_once('autoload.php');
 
-try {
+// try {
 
-	$mobile_no = '11110346122';
-	$message = 'do you like sport?';
-	$sender_id = 'dfewrty56yu';
-	$country_id = 14;
-	$gateway = 'mimsms';
-	$data_type = 'Plain'; // Plain/Unicode
-	$response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
+// 	$mobile_no = '11110346122';
+// 	$message = 'do you like sport?';
+// 	$sender_id = 'dfewrty56yu';
+// 	$country_id = 14;
+// 	$gateway = 'mimsms';
+// 	$data_type = 'Plain'; // Plain/Unicode
+// 	$response = $apiClient->sendSMSviaHttp($mobile_no, $message, $sender_id, $country_id, $gateway, $data_type);
 
-	dd($response);
+// 	dd($response);
 
-} catch (Exception $e) {
+// } catch (Exception $e) {
     
-    echo $e->getMessage();
-}
+//     echo $e->getMessage();
+// }
 
 
 /*
@@ -120,23 +120,23 @@ Array
 
 // Send Singe SMS Via Android Gateway
 
-// require_once('autoload.php');
+require_once('autoload.php');
 
-// try {
+try {
 
-// 	$mobile_no = '11110346122';
-// 	$message = 'do you like sport?';
-// 	$device_id = 1;
-// 	$sim_id = 99;
-// 	$data_type = 'Plain';
-//     $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $data_type);
+	$mobile_no = '11110346122';
+	$message = 'do you like sport?';
+	$device_id = 5;
+	$sim_id = 1;
+	$data_type = 'Plain';
+    $response = $apiClient->sendSMS($mobile_no, $message, $device_id, $sim_id, $data_type);
     
-//     dd($response);
+    dd($response);
 
-// } catch (Exception $e) {
+} catch (Exception $e) {
     
-//     echo $e->getMessage();
-// }
+    echo $e->getMessage();
+}
 
 /*
 
@@ -200,6 +200,7 @@ Array
 
 // Send Multiple SMS Via Android Gateway
 
+
 // require_once('autoload.php');
 
 // try {
@@ -211,7 +212,7 @@ Array
 
 //     $message = 'do you like sport?';
 // 	$device_id = 1;
-// 	$sim_id = 99;
+// 	$sim_id = 1;
 // 	$data_type = 'Plain';
 // 	$send_at = 'now';
 //     $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);

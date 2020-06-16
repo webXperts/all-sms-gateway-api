@@ -18,7 +18,7 @@ try {
 
     $message = 'do you like sport?';
     $device_id = 1;
-    $sim_id = 99;
+    $sim_id = 1;
     $data_type = 'Plain';
     $send_at = 'now';
     $response = $apiClient->sendMultipleSMS($mobile_numbers, $message, $device_id, $sim_id, $data_type, $send_at);
